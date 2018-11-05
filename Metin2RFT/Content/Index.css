@@ -1,0 +1,10 @@
+﻿.body-content .main {
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
