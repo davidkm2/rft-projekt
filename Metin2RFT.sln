@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metin2RFT", "Metin2RFT\Metin2RFT.csproj", "{7F413198-B15C-4AA0-9FE6-23B917B78ADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F413198-B15C-4AA0-9FE6-23B917B78ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F413198-B15C-4AA0-9FE6-23B917B78ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F413198-B15C-4AA0-9FE6-23B917B78ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F413198-B15C-4AA0-9FE6-23B917B78ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AA01451-3A2A-448E-9096-E1F0F2D633B6}
+	EndGlobalSection
+EndGlobal
