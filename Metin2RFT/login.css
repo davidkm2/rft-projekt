@@ -1,0 +1,14 @@
+﻿body {
+    background-color: red;
+    color: white;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.login{
+    border-style:double;
+    border-width:thick;
+    border-color:blue;
+}
