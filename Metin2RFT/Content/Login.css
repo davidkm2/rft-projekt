@@ -5,12 +5,18 @@
     transform: translate(-50%, -50%);
 }
 
+.body-content .login {
+    border-style: double;
+    border-width: thick;
+    border-color: white;
+    border-radius: 5px;
+}
+
 .body-content .msg {
     top: 100px;
     color: red;
     font-size: 20px;
 }
-
 
 .body-content .login table * {
     margin: 10px;
@@ -22,7 +28,6 @@
 }
 
 .body-content .login table {
-    border: 3px solid black;
     width: 350px;
     height: 150px;
 }

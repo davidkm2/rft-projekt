@@ -10,6 +10,16 @@ header {
     font-weight: bold;
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #c1adad;
+    color: white;
+}
+
+.welcome {
+    text-align: center;
+}
+
 footer {
     position: fixed;
     bottom: 0;
