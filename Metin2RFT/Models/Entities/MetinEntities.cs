@@ -1,9 +1,7 @@
-using Metin2RFT.Models;
-using System;
+using Metin2RFT.Models.Entities;
 using System.Data.Entity;
-using System.Linq;
 
-namespace Metin2RFT
+namespace Metin2RFT.Models
 {
     public class MetinEntities : DbContext
     {
@@ -13,5 +11,11 @@ namespace Metin2RFT
 
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

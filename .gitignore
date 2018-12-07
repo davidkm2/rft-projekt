@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Metin2RFT/Properties/PublishProfiles/FolderProfile.pubxml
+/Metin2RFT/Migrations

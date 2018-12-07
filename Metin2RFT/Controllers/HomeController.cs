@@ -1,4 +1,5 @@
 ﻿using Metin2RFT.Models;
+using Metin2RFT.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,6 @@ using WebMatrix.WebData;
 
 namespace Metin2RFT.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         [HttpGet]

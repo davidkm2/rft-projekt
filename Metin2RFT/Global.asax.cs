@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebMatrix.WebData;
 
 namespace Metin2RFT
 {
@@ -16,6 +17,7 @@ namespace Metin2RFT
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            WebSecurity.InitializeDatabaseConnection("Database", "Accounts", "Id", "Username", true);
         }
     }
 }

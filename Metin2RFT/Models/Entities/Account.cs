@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Metin2RFT.Models
+namespace Metin2RFT.Models.Entities
 {
     public class Account
     {
@@ -26,5 +26,6 @@ namespace Metin2RFT.Models
         public int Balance { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

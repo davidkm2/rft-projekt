@@ -1,5 +1,4 @@
-﻿using Metin2RFT.Filters;
-using Metin2RFT.Models;
+﻿using Metin2RFT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,6 @@ using WebMatrix.WebData;
 namespace Metin2RFT.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         // GET: /Account/Login
