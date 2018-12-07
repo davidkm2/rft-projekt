@@ -1,9 +1,6 @@
 ﻿using Metin2RFT.Models;
 using Metin2RFT.Models.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 
@@ -14,7 +11,7 @@ namespace Metin2RFT.Controllers
     {
         private static readonly SelectList dropDown = new SelectList(new string[] { "Name", "Price ascending", "Price descending", "Category" });
 
-        // GET: Item
+        // GET: /Item/
 
         [HttpGet]
         public ActionResult Index()
@@ -27,7 +24,7 @@ namespace Metin2RFT.Controllers
             }
         }
 
-        // POST: Item
+        // POST: Item/
 
         [HttpPost]
         public ActionResult Index(string sort, string search)
@@ -56,7 +53,7 @@ namespace Metin2RFT.Controllers
             }
         }
 
-        // GET: Item/Details
+        // GET: /Item/Details
 
         [HttpGet]
         public ActionResult Details(int id)
@@ -68,7 +65,7 @@ namespace Metin2RFT.Controllers
             }
         }
 
-        // POST: Item/Buy
+        // POST: /Item/Details
 
         [HttpPost]
         public ActionResult Details(Item item)

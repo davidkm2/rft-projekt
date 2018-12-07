@@ -1,20 +1,68 @@
 ﻿using Metin2RFT.Models;
-using Metin2RFT.Models.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using WebMatrix.WebData;
 
 namespace Metin2RFT.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: /
+
         [HttpGet]
         public ActionResult Index()
         {
             return View();
+        }
+
+        // GET: /Contact
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        // GET: /Download
+
+        [HttpGet]
+        public ActionResult Download()
+        {
+            return View();
+        }
+
+        // GET: /Rankings
+
+        [HttpGet]
+        public ActionResult Rankings()
+        {
+            using (var db = new MetinEntities())
+            {
+                var ret = db.Players.ToList();
+                return View(ret);
+            }
+        }
+
+        // POST: /Rankings
+
+        [HttpPost]
+        public ActionResult Rankings(string rankby, string empire)
+        {
+            using (var db = new MetinEntities())
+            {
+                int.TryParse(empire, out int emp);
+                var ret = emp == 0 ? db.Players.AsQueryable() : db.Players.Where(x => x.Empire == emp);
+                switch (rankby)
+                {
+                    default:
+                    case "Level":
+                        ret = ret.OrderByDescending(x => x.Level);
+                        break;
+                    case "Gold":
+                        ret = ret.OrderByDescending(x => x.Gold);
+                        break;
+                }
+                return View(ret.ToList());
+            }
         }
     }
 }
