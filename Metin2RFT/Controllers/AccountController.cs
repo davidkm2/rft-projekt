@@ -1,8 +1,6 @@
 ﻿using Metin2RFT.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -44,10 +42,9 @@ namespace Metin2RFT.Controllers
             return View(model);
         }
 
-        // POST: /Account/LogOff
+        // GET: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
@@ -125,6 +122,24 @@ namespace Metin2RFT.Controllers
                 }
             }
             return View(model);
+        }
+
+        // GET: /Account/Manage
+
+        [HttpGet]
+        public ActionResult Manage()
+        {
+            using (var db = new MetinEntities())
+            {
+                var acc = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                var ret = new AccountManageModel
+                {
+                    Account = acc,
+                    Players = acc.Players.ToList(),
+                    Items = acc.Items.ToList()
+                };
+                return View(ret);
+            }
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
