@@ -3,3 +3,10 @@
 }
 
 <div class="main">Fejlesztés alatt!</div>
+
+@if (Request.IsAuthenticated)
+{
+    <text>
+        Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+    </text>
+}
