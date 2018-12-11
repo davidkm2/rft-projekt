@@ -6,10 +6,10 @@ namespace Metin2RFT.Models.Entities
 {
     public enum ItemCategory
     {
-        Sword = 1,
-        Armor,
-        Mount,
-        Other
+        Kard = 1,
+        Vért,
+        Hátas,
+        Egyéb
     }
 
     public class Item

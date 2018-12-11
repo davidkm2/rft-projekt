@@ -32,16 +32,16 @@ namespace Metin2RFT.Controllers
                 switch (sort)
                 {
                     default:
-                    case "Name":
+                    case "Név":
                         ret = ret.OrderBy(x => x.Name);
                         break;
-                    case "Price ascending":
+                    case "Ár növekvő":
                         ret = ret.OrderBy(x => x.Price);
                         break;
-                    case "Price descending":
+                    case "Ár csökkenő":
                         ret = ret.OrderByDescending(x => x.Price);
                         break;
-                    case "Category":
+                    case "Kategória":
                         ret = ret.OrderBy(x => x.Category);
                         break;
                 }
