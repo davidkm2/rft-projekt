@@ -22,10 +22,15 @@ namespace Metin2RFT.Models.Entities
         [Required]
         [MaxLength(7)]
         public string DeleteCode { get; set; }
-
+        
         public int Balance { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
         public virtual ICollection<Item> Items { get; set; }
+
+        public Account()
+        {
+            this.Balance = 5000;
+        }
     }
 }
