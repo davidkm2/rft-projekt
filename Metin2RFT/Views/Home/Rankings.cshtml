@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Metin2RFT.Models.Entities.Player>
+
+
+@{
+    ViewBag.Title = "HomeController";
+}
+
+@using System.Data.Entity;
+
+<h2>Rankings</h2>
+
+
+<table>
+    <tr>
+        <th>@Html.ActionLink("Karakter", "Rankings")</th>
+        <th>@Html.ActionLink("Szint", "Rankings", new { rankby = "Level" })</th>
+        <th>@Html.ActionLink("Birodalom", "Rankings", new { rankby = "Level", empire = "1" })</th>
+    </tr>
+    @foreach (var player in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(Model => player.Name)</td>
+        <td>@Html.DisplayFor(Model => player.Level)</td>
+        <td>@Html.DisplayFor(Model => player.Empire)</td>
+    </tr>
+    }
+</table>
