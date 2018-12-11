@@ -9,14 +9,11 @@ namespace Metin2RFT.Controllers
     [Authorize]
     public class ItemController : Controller
     {
-        private static readonly SelectList dropDown = new SelectList(new string[] { "Name", "Price ascending", "Price descending", "Category" });
-
-        // GET: /Item/
+        // GET: /Item/Index
 
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.DropDown = dropDown;
             using (var db = new MetinEntities())
             {
                 var ret = db.Items.ToList();
@@ -24,12 +21,11 @@ namespace Metin2RFT.Controllers
             }
         }
 
-        // POST: Item/
+        // POST: Item/Index
 
         [HttpPost]
         public ActionResult Index(string sort, string search)
         {
-            ViewBag.DropDown = dropDown;
             using (var db = new MetinEntities())
             {
                 var ret = string.IsNullOrEmpty(search) ? db.Items.AsQueryable() : db.Items.Where(x => x.Name.ToLower().Contains(search.ToLower()));

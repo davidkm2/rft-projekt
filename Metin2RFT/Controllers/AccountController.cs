@@ -12,6 +12,13 @@ namespace Metin2RFT.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public enum ManageMessageId
+        {
+            ChangePasswordSuccess,
+            SetPasswordSuccess,
+            RemoveLoginSuccess,
+        }
+
         // GET: /Account/Login
 
         [AllowAnonymous]
@@ -32,7 +39,7 @@ namespace Metin2RFT.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }
-            
+
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
@@ -74,6 +81,47 @@ namespace Metin2RFT.Controllers
                 catch (MembershipCreateUserException e)
                 {
                     ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+            }
+            return View(model);
+        }
+
+        // GET: /Account/ChangePassword
+
+        public ActionResult ChangePassword(bool? success)
+        {
+            if (success.HasValue && success.Value)
+            {
+                ViewBag.StatusMessage = "Sikeres jelszóváltoztatá.s";
+            }
+            return View();
+        }
+
+        // POST: /Account/ChangePassword
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                bool changePasswordSucceeded;
+                try
+                {
+                    changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                }
+                catch (Exception)
+                {
+                    changePasswordSucceeded = false;
+                }
+
+                if (changePasswordSucceeded)
+                {
+                    return RedirectToAction("ChangePassword", new { success = true });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "A régi jelszó nem megfelelő vagy az új jelszó érvénytelen.");
                 }
             }
             return View(model);

@@ -5,24 +5,24 @@ namespace Metin2RFT.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "E-mail")]
+        [Display(Name = "E-mail cím")]
         [DataType(DataType.EmailAddress)]
-        [MaxLength(50, ErrorMessage = "The {0} must be at least {1} characters long.")]
+        [MaxLength(50, ErrorMessage = "Az e-mail cím legfeljebb {1} karakter hosszú lehet.")]
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
+        [StringLength(100, ErrorMessage = "A jelszónak legalább {2} karakter hosszúnak kell lennie.", MinimumLength = 8)]
         public string Password { get; set; }
 
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Jelszó megerősítése")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "A két jelszó nem egyezik.")]
         public string ConfirmPassword { get; set; }
     }
 }
