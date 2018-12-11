@@ -40,7 +40,7 @@ namespace Metin2RFT.Controllers
                 return RedirectToLocal(returnUrl);
             }
 
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("", "Helytelen felhasználónév vagy jelszó.");
             return View(model);
         }
 
@@ -74,7 +74,7 @@ namespace Metin2RFT.Controllers
             {
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { model.Email, DeleteCode = "1234567", Balance = 0 });
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { model.Email, model.DeleteCode, Balance = 5000 });
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -92,7 +92,7 @@ namespace Metin2RFT.Controllers
         {
             if (success.HasValue && success.Value)
             {
-                ViewBag.StatusMessage = "Sikeres jelszóváltoztatá.s";
+                ViewBag.StatusMessage = "Sikeres jelszóváltoztatás.";
             }
             return View();
         }
@@ -144,34 +144,17 @@ namespace Metin2RFT.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "User name already exists. Please enter a different user name.";
-
+                    return "A megadott felhasználónévvel már regisztráltak.";
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
-
+                    return "A megadott az e-mail címmel már regisztráltak.";
                 case MembershipCreateStatus.InvalidPassword:
-                    return "The password provided is invalid. Please enter a valid password value.";
-
+                    return "A megadott jelszó érvénytelen.";
                 case MembershipCreateStatus.InvalidEmail:
-                    return "The e-mail address provided is invalid. Please check the value and try again.";
-
-                case MembershipCreateStatus.InvalidAnswer:
-                    return "The password retrieval answer provided is invalid. Please check the value and try again.";
-
-                case MembershipCreateStatus.InvalidQuestion:
-                    return "The password retrieval question provided is invalid. Please check the value and try again.";
-
+                    return "A megadott e-mai cím érvénytelen.";
                 case MembershipCreateStatus.InvalidUserName:
-                    return "The user name provided is invalid. Please check the value and try again.";
-
-                case MembershipCreateStatus.ProviderError:
-                    return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
-
-                case MembershipCreateStatus.UserRejected:
-                    return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
-
+                    return "A megadott felhasználónév érvénytelen.";
                 default:
-                    return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Ismeretlen hiba történt. Kérjük ellenőrizzen mindent adatot, hogy helyes-e és próbálkozzon újra.";
             }
         }
     }
