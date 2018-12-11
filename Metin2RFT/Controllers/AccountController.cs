@@ -42,9 +42,10 @@ namespace Metin2RFT.Controllers
             return View(model);
         }
 
-        // GET: /Account/LogOff
+        // POST: /Account/LogOff
 
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
