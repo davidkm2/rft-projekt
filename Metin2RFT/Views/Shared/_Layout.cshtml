@@ -8,6 +8,23 @@
 </head>
 <body>
     <header>
+        <div class="logreg">
+            @if (Request.IsAuthenticated)
+            {
+                <text>
+                    Hello, @Html.ActionLink(User.Identity.Name, "ChangePassword", "Account", routeValues: null, htmlAttributes: new { @class = "Account", title = "ChangePassword" })!
+                </text>
+                <form method="post" action="@Url.Action("LogOff", "Account")" id="signoutfrm" style="display:none;">
+                    @Html.AntiForgeryToken()
+                </form>
+
+                <a href="" onclick="$('#signoutfrm').submit(); return false;">LOGOUT</a>
+            }
+            else
+            {
+                <text><a href="/Account/Login">Jelentkezz be</a> vagy <a href="/Account/Register">Regisztrálj!</a></text>
+            }
+        </div>
         <div class="navigation">
             <ul>
                 <li><a href="/Home/Index" class="home">Home</a></li>
