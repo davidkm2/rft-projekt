@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Metin2RFT.Models
 {
     public class LoginModel
     {
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Emlékezz rám")]
         public bool RememberMe { get; set; }
     }
 }

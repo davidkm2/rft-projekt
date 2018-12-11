@@ -6,7 +6,7 @@ namespace Metin2RFT.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: /
+        // GET: /Index
 
         [HttpGet]
         public ActionResult Index()
@@ -37,7 +37,7 @@ namespace Metin2RFT.Controllers
         {
             using (var db = new MetinEntities())
             {
-                var ret = db.Players.ToList();
+                var ret = db.Players.OrderByDescending(x => x.Level).ToList();
                 return View(ret);
             }
         }
@@ -54,10 +54,10 @@ namespace Metin2RFT.Controllers
                 switch (rankby)
                 {
                     default:
-                    case "Level":
+                    case "Szint":
                         ret = ret.OrderByDescending(x => x.Level);
                         break;
-                    case "Gold":
+                    case "Arany":
                         ret = ret.OrderByDescending(x => x.Gold);
                         break;
                 }
