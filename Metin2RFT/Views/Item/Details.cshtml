@@ -1,0 +1,20 @@
+﻿@model Metin2RFT.Models.Entities.Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<dd>
+    @Html.DisplayFor(model => model.Description)
+</dd>
+
+
+    @using (Html.BeginForm("Details", "Item", FormMethod.Post))
+    {
+
+        <input type="submit" value="model" />
+
+    }
+
