@@ -68,12 +68,14 @@ footer {
     bottom: 0;
     width: 100%;
     text-align: center;
+    background-color: #c1adad;
 }
 
 table{
     border: 1px solid black;
     margin-left:auto;
     margin-right:auto;
+    margin-bottom:50px;
     border-collapse:separate;
     border-spacing:15px 15px;
 }
