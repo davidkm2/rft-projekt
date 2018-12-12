@@ -12,10 +12,15 @@ namespace Metin2RFT.Controllers
         // GET: /Item/Index
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(bool? success)
         {
             using (var db = new MetinEntities())
             {
+                if (success.HasValue)
+                {
+                    ViewBag.Message = success.Value ? "Sikeres vásárlás" : "Nincs elég egyenlege, hogy megvásárolja ezt a tárgyat. Kérjük töltse fel egyenlegét a profiljában!";
+                }
+                ViewBag.Balance = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId).Balance;
                 var ret = db.Items.ToList();
                 return View(ret);
             }
@@ -45,6 +50,7 @@ namespace Metin2RFT.Controllers
                         ret = ret.OrderBy(x => x.Category);
                         break;
                 }
+                ViewBag.Balance = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId).Balance;
                 return View(ret.ToList());
             }
         }
@@ -70,18 +76,18 @@ namespace Metin2RFT.Controllers
             {
                 item = db.Items.Single(x => x.Id == item.Id);
                 var user = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                var succ = true;
                 if (user.Balance >= item.Price)
                 {
                     user.Items.Add(item);
                     user.Balance -= item.Price;
                     db.SaveChanges();
-                    ViewBag.Success = "Sikeres vásárlás!";
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Nincs elég egyenlege, hogy megvásárolja ezt a tárgyat. Kérjük töltse fel egyenlegét a profiljában!");
+                    succ = false;
                 }
-                return View("Details", item);
+                return RedirectToAction("Index", new { success = succ });
             }
         }
     }
