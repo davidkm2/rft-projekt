@@ -73,12 +73,13 @@ namespace Metin2RFT.Controllers
                 if (user.Balance >= item.Price)
                 {
                     user.Items.Add(item);
+                    user.Balance -= item.Price;
                     db.SaveChanges();
-                    ViewBag.Success = "Successful purchase!";
+                    ViewBag.Success = "Sikeres vásárlás!";
                 }
                 else
                 {
-                    ModelState.AddModelError("", "You do not have enough money to buy this item. Please fill up your balance!");
+                    ModelState.AddModelError("", "Nincs elég egyenlege, hogy megvásárolja ezt a tárgyat. Kérjük töltse fel egyenlegét a profiljában!");
                 }
                 return View("Details", item);
             }
