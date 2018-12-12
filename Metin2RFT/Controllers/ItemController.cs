@@ -63,7 +63,7 @@ namespace Metin2RFT.Controllers
             using (var db = new MetinEntities())
             {
                 var ret = db.Items.Single(x => x.Id == id);
-                return PartialView(ret);
+                return View(ret);
             }
         }
 

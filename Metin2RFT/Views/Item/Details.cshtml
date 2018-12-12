@@ -4,17 +4,49 @@
     ViewBag.Title = "Details";
 }
 
+<h2>Details</h2>
 
+<div>
+    <h4>Item</h4>
+    <hr />
+    <table>
+        <tr>
+            <th>
+                Név
+            </th>
 
-<dd>
-    @Html.DisplayFor(model => model.Description)
-</dd>
+            <th>
+                Ár
+            </th>
 
+            <th>
+                Leírás
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
 
-    @using (Html.BeginForm("Details", "Item", FormMethod.Post))
-    {
+            <td>
+                @Html.DisplayFor(model => model.Price)
+            </td>
 
-        <input type="submit" value="model" />
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+        </tr>
+    </table>
+</div>
 
-    }
+@using (Html.BeginForm("Details", "Item", FormMethod.Post))
+{
 
+    <input type="submit" value="Vásárlás" />
+
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

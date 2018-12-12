@@ -39,7 +39,7 @@
             <td>@Html.DisplayFor(Model => item.Name)</td>
             <td>@Html.DisplayFor(Model => item.Price)</td>
             <td>
-                @Html.Action("Details", new {id = item.Id})
+               <a href='@Url.Action("Details", new {id = item.Id})'>Részletek</a>
             </td>
         </tr>
         }

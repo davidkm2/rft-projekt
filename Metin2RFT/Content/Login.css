@@ -1,8 +1,5 @@
 ﻿.body-content .msg, .body-content .login {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+
 }
 
 .body-content .login {
@@ -19,21 +16,19 @@
 }
 
 .body-content .login table * {
-    margin: 10px;
+    margin: 100px;
 }
 
 .body-content .login table caption {
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
 }
 
 .body-content .login table {
     width: 350px;
-    height: 150px;
+    height: 500px;
 }
 
 .body-content .login #submit input {
     padding: 5px;
 }
-
-
