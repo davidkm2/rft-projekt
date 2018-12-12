@@ -7,9 +7,17 @@
 <h2>Rankings</h2>
 @using (Html.BeginForm())
 {
+    var selectemp = new SelectList(
+        new List<SelectListItem>
+    {
+    new SelectListItem {Text = "Mind", Value = "Mind"},
+    new SelectListItem {Text = "Piros", Value = "1"},
+    new SelectListItem {Text = "Sárga", Value = "2" },
+    new SelectListItem {Text = "Kék", Value = "3"}
+    }, "Value", "Text");
     var emp = new string[] { "Mind", "1", "2", "3" };
     var rank = new string[] { "Szint", "Arany" };
-    @Html.DropDownList("empire", new SelectList(emp), new { onchange = "this.form.submit();" });
+    @Html.DropDownList("empire", selectemp, new { onchange = "this.form.submit();" });
     @Html.DropDownList("rankby", new SelectList(rank), new { onchange = "this.form.submit();" });
     int RowNo = 0;
 

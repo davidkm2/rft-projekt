@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Metin2RFT.Models.Entities.Item>
+
+@{
+    ViewBag.Title = "Itemshop";
+}
+
+<h2>Itemshop</h2>
+
+@using (Html.BeginForm())
+{
+    /*var selectList = new SelectList(
+        new List<SelectListItem>
+    {
+    new SelectListItem {Text = "Név", Value = "Name"},
+    new SelectListItem {Text = "Ár növekvő", Value = "Price ascending"},
+    new SelectListItem {Text = "Ár csökkenő", Value = "Price descending" },
+    new SelectListItem {Text = "Kategória", Value = "Category"}
+    }, "Value", "Text");*/
+    var sorting = new string[] { "Név", "Ár növekvő", "Ár csökkenő", "Kategória" };
+    @Html.DropDownList("sort", new SelectList(sorting), new { onchange = "this.form.submit();" });
+    <div class="search-bar">
+        @using (Html.BeginForm("Index", "Item",FormMethod.Get))
+        {
+        @Html.TextBox("search")
+        <input type="submit" value="Search" class="search-button" />
+        }
+    </div>
+    <table>
+        <tr>
+            <th>Kategória</th>
+            <th>Tárgy neve</th>
+            <th>Ára</th>
+            <th>+</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(Model => item.Category)</td>
+            <td>@Html.DisplayFor(Model => item.Name)</td>
+            <td>@Html.DisplayFor(Model => item.Price)</td>
+            <td>Részletek</td>
+        </tr>
+        }
+
+    </table>
+
+    }
+
