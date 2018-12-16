@@ -33,6 +33,12 @@ namespace Metin2RFT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+            if (Roles.IsUserInRole(model.UserName, "Banned"))
+            {
+                ModelState.AddModelError("", "Ez a fiók ki van tiltva.");
+                return View(model);
+            }
+
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
@@ -74,6 +80,7 @@ namespace Metin2RFT.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { model.Email, model.DeleteCode, Balance = 5000 });
                     WebSecurity.Login(model.UserName, model.Password);
+                    Roles.AddUserToRole(model.UserName, "User");
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -132,7 +139,7 @@ namespace Metin2RFT.Controllers
         {
             using (var db = new MetinEntities())
             {
-                var acc = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                var acc = db.Accounts.SingleOrDefault(x => x.Id == WebSecurity.CurrentUserId);
                 var ret = new AccountManageModel
                 {
                     Account = acc,
@@ -151,7 +158,7 @@ namespace Metin2RFT.Controllers
             ViewBag.Success = success == true ? "Sikeres feltöltés." : "" ;
             using (var db = new MetinEntities())
             {
-                var ret = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                var ret = db.Accounts.SingleOrDefault(x => x.Id == WebSecurity.CurrentUserId);
                 return View(ret);
             }
         }
@@ -163,7 +170,7 @@ namespace Metin2RFT.Controllers
         {
             using (var db = new MetinEntities())
             {
-                var acc = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                var acc = db.Accounts.SingleOrDefault(x => x.Id == WebSecurity.CurrentUserId);
                 acc.Balance += balance;
                 db.SaveChanges();
                 return RedirectToAction("UploadBalance", new { success = true });

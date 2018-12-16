@@ -6,7 +6,7 @@ using WebMatrix.WebData;
 
 namespace Metin2RFT.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "User,Admin")]
     public class ItemController : Controller
     {
         // GET: /Item/Index

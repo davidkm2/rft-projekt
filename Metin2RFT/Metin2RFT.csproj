@@ -162,9 +162,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Models\AccountManageModel.cs" />
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\Entities\Item.cs" />
     <Compile Include="Models\Entities\MetinEntities.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="Models\Entities\Player.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\RenamePlayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
