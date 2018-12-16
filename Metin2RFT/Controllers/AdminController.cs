@@ -46,7 +46,7 @@ namespace Metin2RFT.Controllers
         // GET: /Admin/Account/id
 
         [HttpGet]
-        public ActionResult Account(int id, bool? ban)
+        public ActionResult AccountDetails(int id, bool? ban)
         {
             if (ban.HasValue)
             {
@@ -79,7 +79,7 @@ namespace Metin2RFT.Controllers
                 Roles.RemoveUserFromRole(acc.Username, "User");
                 Roles.AddUserToRole(acc.Username, "Banned");
             }
-            return RedirectToAction("Account", new { id = accId, ban = true });
+            return RedirectToAction("AccountDetails", new { id = accId, ban = true });
         }
 
         // POST: /Admin/Unban
@@ -93,7 +93,7 @@ namespace Metin2RFT.Controllers
                 Roles.RemoveUserFromRole(acc.Username, "Banned");
                 Roles.AddUserToRole(acc.Username, "User");
             }
-            return RedirectToAction("Account", new { id = accId, ban = false });
+            return RedirectToAction("AccountDetails", new { id = accId, ban = false });
         }
 
         // GET: /Admin/RenamePlayer
@@ -119,7 +119,7 @@ namespace Metin2RFT.Controllers
                 var player = db.Players.SingleOrDefault(x => x.Id == model.Player.Id);
                 player.Name = model.NewName;
                 db.SaveChanges();
-                return RedirectToAction("Account", new { id = player.Account.Id });
+                return RedirectToAction("AccountDetails", new { id = player.Account.Id });
             }
         }
     }
