@@ -1,9 +1,4 @@
-﻿using Metin2RFT.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Metin2RFT
@@ -26,6 +21,12 @@ namespace Metin2RFT
                 name: "Item",
                 url: "item/{action}/{id}",
                 defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "admin/{action}/{id}",
+                defaults: new { controller = "Admin", action = "Account", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
