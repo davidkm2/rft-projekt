@@ -143,6 +143,33 @@ namespace Metin2RFT.Controllers
             }
         }
 
+        // GET: /Account/UploadBalance
+
+        [HttpGet]
+        public ActionResult UploadBalance(bool? success)
+        {
+            ViewBag.Success = success == true ? "Sikeres feltöltés." : "" ;
+            using (var db = new MetinEntities())
+            {
+                var ret = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                return View(ret);
+            }
+        }
+
+        // POST: /Account/UploadBalance
+
+        [HttpPost]
+        public ActionResult UploadBalance(int balance)
+        {
+            using (var db = new MetinEntities())
+            {
+                var acc = db.Accounts.Single(x => x.Id == WebSecurity.CurrentUserId);
+                acc.Balance += balance;
+                db.SaveChanges();
+                return RedirectToAction("UploadBalance", new { success = true });
+            }
+        }
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
