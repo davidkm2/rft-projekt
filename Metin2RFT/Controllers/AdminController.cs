@@ -16,7 +16,17 @@ namespace Metin2RFT.Controllers
         {
             using (var db = new MetinEntities())
             {
-                var ret = db.Accounts.ToList();
+                var accs = db.Accounts.AsQueryable();
+                var ret = new List<AccountModel>();
+                foreach (var acc in accs)
+                {
+                    ret.Add(new AccountModel
+                    {
+                        Id = acc.Id,
+                        Username = acc.Username,
+                        IsBanned = Roles.IsUserInRole(acc.Username, "Banned")
+                    });
+                }
                 return this.View(ret);
             }
         }
