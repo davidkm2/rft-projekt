@@ -1,18 +1,16 @@
 ﻿@model Metin2RFT.Models.RenamePlayerModel
 
 @{
-    ViewBag.Title = "RenamePlayer";
+    ViewBag.Title = "Játékos átnevezése";
 }
 
-<h2>RenamePlayer</h2>
+<h2>Játékos átnevezése</h2>
 @using (Html.BeginForm())
 {
-<div class="search-bar">
-    @using (Html.BeginForm("RenamePlayer", "Admin", FormMethod.Post))
-    {
-        @Html.TextBox("NewName")
+    <div>@Model.Player.Name</div>
+    <div class="search-bar">
+        @Html.TextBoxFor(model => model.NewName)
         @Html.HiddenFor(model => model.Player)
         <input type="submit" value="Átnevez" class="search-button" />
-    }
-</div>
+    </div>
 }

@@ -123,7 +123,7 @@ namespace Metin2RFT.Controllers
         // POST: /Admin/RenamePlayer
 
         [HttpPost]
-        public ActionResult RenamePlayer(RenamePlayerModel model,Player p)
+        public ActionResult RenamePlayer(RenamePlayerModel model, Player p)
         {
             using (var db = new MetinEntities())
             {

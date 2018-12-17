@@ -36,22 +36,23 @@
 
     <br />
     <br />
-    @Html.ActionLink("Vissza", "Account");
 
     <h3>Karakterek</h3>
     <table>
         <tr>
             <th>Karakternév</th>
             <th>Szint</th>
-            <th></th>
+            <th>Átnevezés</th>
         </tr>
-        @foreach(var playa in Model.Players)
+        @foreach (var player in Model.Players)
         {
             <tr>
-                <td>@Html.DisplayFor(Model => playa.Name)</td>
-                <td>@Html.DisplayFor(Model => playa.Level)</td>
-                <td>@Html.ActionLink("RenamePlayer", "RenamePlayer", new { id = playa.Id})</td>
+                <td>@Html.DisplayFor(model => player.Name)</td>
+                <td>@Html.DisplayFor(model => player.Level)</td>
+                <td>@Html.ActionLink("Átnevezés", "RenamePlayer", new { id = player.Id })</td>
             </tr>
         }
     </table>
+
+    @Html.ActionLink("Vissza", "Account");
 }
