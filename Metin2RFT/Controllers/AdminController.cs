@@ -1,4 +1,5 @@
 ﻿using Metin2RFT.Models;
+using Metin2RFT.Models.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -122,11 +123,11 @@ namespace Metin2RFT.Controllers
         // POST: /Admin/RenamePlayer
 
         [HttpPost]
-        public ActionResult RenamePlayer(RenamePlayerModel model)
+        public ActionResult RenamePlayer(RenamePlayerModel model,Player p)
         {
             using (var db = new MetinEntities())
             {
-                var player = db.Players.SingleOrDefault(x => x.Id == model.Player.Id);
+                var player = db.Players.SingleOrDefault(x => x.Id == p.Id);
                 player.Name = model.NewName;
                 db.SaveChanges();
                 return RedirectToAction("AccountDetails", new { id = player.Account.Id });
