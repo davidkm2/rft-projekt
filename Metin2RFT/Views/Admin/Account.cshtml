@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Metin2RFT.Models.AccountModel>
+
+@{
+    ViewBag.Title = "Account";
+}
+
+@using (Html.BeginForm()){
+    <div class="search-bar">
+    @using (Html.BeginForm("Account", "Admin", FormMethod.Get))
+    {
+        @Html.TextBox("search")
+        <input type="submit" value="Keresés" class="search-button" />
+    }
+</div>
+
+<table>
+    <tr>
+        <th>Account neve</th>
+    </tr>
+    @foreach(var actual in Model){
+    <tr>
+        <td>@Html.DisplayFor(Model  => actual.Username)</td>
+        <td>
+            <a href='@Url.Action("AccountDetails", new {id = actual.Id})'>Tovább</a>
+        </td>
+    </tr>
+    
+    }
+</table>
+}

@@ -1,0 +1,44 @@
+﻿@model Metin2RFT.Models.AccountModel
+
+@{
+    ViewBag.Title = "AccountDetails";
+}
+
+
+
+
+<h2>AccountDetails</h2>
+
+@using (Html.BeginForm()){
+<table>
+    <tr>
+        <th>Felhasználónév</th>
+        <th>Email címe</th>
+        <th>Egyenleg</th>
+        <th>Bannolt?</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model => Model.Username)</td>
+        <td>@Html.DisplayFor(model => Model.Email)</td>
+        <td>@Html.DisplayFor(model => Model.Balance)</td>
+        <td>@Html.DisplayFor(model => Model.IsBanned)</td>
+    </tr>
+
+
+</table>
+
+using (Html.BeginForm("Ban", "Admin", FormMethod.Post))
+        {
+            <input type="submit" value="Bannold ki a rákba" />
+        }
+
+    if(Model.IsBanned){
+<a href='@Url.Action("Unban", new {accId = Model.Id})'>Felold</a>
+    }
+    else{
+        using (Html.BeginForm("Ban", "Admin", FormMethod.Post))
+        {
+<input type="submit" value="Ban" />
+        }
+    }
+}

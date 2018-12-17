@@ -42,6 +42,7 @@ namespace Metin2RFT.Controllers
                 var ret = new List<AccountModel>();
                 foreach (var acc in accs)
                 {
+                    if(acc.Username.Contains(search))
                     ret.Add(new AccountModel
                     {
                         Id = acc.Id,
