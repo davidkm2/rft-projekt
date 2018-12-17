@@ -42,7 +42,6 @@ namespace Metin2RFT.Controllers
                 var ret = new List<AccountModel>();
                 foreach (var acc in accs)
                 {
-                    if(acc.Username.Contains(search))
                     ret.Add(new AccountModel
                     {
                         Id = acc.Id,
@@ -54,7 +53,7 @@ namespace Metin2RFT.Controllers
             }
         }
 
-        // GET: /Admin/Account/id
+        // GET: /Admin/AccountDetails
 
         [HttpGet]
         public ActionResult AccountDetails(int id, bool? ban)
@@ -79,9 +78,9 @@ namespace Metin2RFT.Controllers
             }
         }
 
-        // POST: /Admin/Ban
+        // GET: /Admin/Ban
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Ban(int accId)
         {
             using (var db = new MetinEntities())
@@ -93,9 +92,9 @@ namespace Metin2RFT.Controllers
             return RedirectToAction("AccountDetails", new { id = accId, ban = true });
         }
 
-        // POST: /Admin/Unban
+        // GET: /Admin/Unban
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Unban(int accId)
         {
             using (var db = new MetinEntities())
