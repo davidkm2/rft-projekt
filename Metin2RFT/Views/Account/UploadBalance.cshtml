@@ -1,0 +1,18 @@
+﻿@model Metin2RFT.Models.Entities.Account
+
+@{
+    ViewBag.Title = "UploadBalance";
+}
+
+<h2>UploadBalance</h2>
+
+@using (Html.BeginForm())
+{
+    <h3>Jelenlegi egyenleg: @Html.DisplayFor(model => model.Balance)</h3>
+    <br />
+    <h4>Feltöltés:</h4>
+    <div class="balance-upload">
+        @Html.TextBoxFor(model => model.Balance)
+        <input type="submit" value="Feltölt" class="balance-upload" />
+    </div>
+}

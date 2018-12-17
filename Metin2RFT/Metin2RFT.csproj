@@ -223,6 +223,7 @@
     <Content Include="Views\Admin\Account.cshtml" />
     <Content Include="Views\Admin\AccountDetails.cshtml" />
     <Content Include="Views\Admin\RenamePlayer.cshtml" />
+    <Content Include="Views\Account\UploadBalance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />
