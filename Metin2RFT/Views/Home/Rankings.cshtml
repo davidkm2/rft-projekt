@@ -19,7 +19,7 @@
     var rank = new string[] { "Szint", "Arany" };
     @Html.DropDownList("empire", selectemp, new { onchange = "this.form.submit();" });
     @Html.DropDownList("rankby", new SelectList(rank), new { onchange = "this.form.submit();" });
-    int RowNo = 0;
+    int RowNo = 1;
 
     <table>
         <tr>
@@ -31,13 +31,13 @@
         </tr>
         @foreach (var player in Model)
         {
-            string imageName = string.Format("{0}.png", player.Empire);
+            //string imageName = string.Format("{0}.png", player.Empire);
             <tr>
-                <td>@{RowNo++;} @RowNo</td>
-                <td>@Html.DisplayFor(Model => player.Name)</td>
-                <td>@Html.DisplayFor(Model => player.Level)</td>
-                <td>@Html.DisplayFor(Model => player.Gold)</td>
-                <td><img src="/Content/img/@imageName" /></td>
+                <td>@(RowNo++)</td>
+                <td>@player.Name</td>
+                <td>@player.Level</td>
+                <td>@player.Gold</td>
+                <td><img src="/Content/img/@(player.Empire).png" /></td>
             </tr>
         }
     </table>
