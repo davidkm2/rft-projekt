@@ -14,14 +14,6 @@ namespace Metin2RFT.Controllers
             return View();
         }
 
-        // GET: /Contact
-
-        [HttpGet]
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
         // GET: /Download
 
         [HttpGet]
