@@ -222,6 +222,7 @@
     <Content Include="Views\Home\Download.cshtml" />
     <Content Include="Views\Admin\Account.cshtml" />
     <Content Include="Views\Admin\AccountDetails.cshtml" />
+    <Content Include="Views\Admin\RenamePlayer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />

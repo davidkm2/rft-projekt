@@ -37,4 +37,21 @@
     <br />
     <br />
     @Html.ActionLink("Vissza", "Account");
+
+    <h3>Karakterek</h3>
+    <table>
+        <tr>
+            <th>Karakternév</th>
+            <th>Szint</th>
+            <th></th>
+        </tr>
+        @foreach(var playa in Model.Players)
+        {
+            <tr>
+                <td>@Html.DisplayFor(Model => playa.Name)</td>
+                <td>@Html.DisplayFor(Model => playa.Level)</td>
+                <td>@Html.ActionLink("RenamePlayer", "RenamePlayer", new { id = playa.Id})</td>
+            </tr>
+        }
+    </table>
 }
